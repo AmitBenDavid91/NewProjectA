@@ -1,0 +1,163 @@
+/**
+ * Algebra Tutor - CSS for mathematical formula display
+ */
+
+/* Base styles for math elements */
+.algebra-tutor-math {
+    display: inline-block;
+    margin: 0 2px;
+    direction: ltr; /* Always LTR for math */
+    text-align: left;
+}
+
+/* Block math formulas */
+.algebra-tutor-math.math-block {
+    display: block;
+    text-align: center;
+    margin: 1em auto;
+    width: fit-content;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* Improve matrix display */
+.mjx-mtable {
+    display: inline-table !important;
+    vertical-align: middle !important;
+}
+
+/* Fix ampersand display in matrices */
+.mjx-mtr {
+    display: table-row !important;
+}
+
+.mjx-mtd {
+    display: table-cell !important;
+    text-align: center !important;
+    padding: 0.2em 0.5em !important;
+}
+
+/* Make sure fractions are properly sized */
+.mjx-mfrac {
+    vertical-align: -0.4em !important;
+}
+
+/* Ensure proper spacing around math elements */
+p > .algebra-tutor-math,
+li > .algebra-tutor-math {
+    vertical-align: middle;
+}
+
+/* Handle overflowing formulas */
+.algebra-tutor-math.math-block {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 0.5em; /* Space for scrollbar */
+}
+
+/* Improve display in tables */
+td .algebra-tutor-math,
+th .algebra-tutor-math {
+    vertical-align: middle;
+}
+
+/* Enhance display on smaller screens */
+@media (max-width: 768px) {
+    .algebra-tutor-math.math-block {
+        font-size: 0.95em; /* Slightly smaller font on mobile */
+    }
+}
+
+/* Fix potential overflow issues */
+mjx-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+}
+
+/* Styles for elements that contain math */
+.question-text,
+.answer-text,
+.question-card {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* Show highlight on hover for better UX */
+.algebra-tutor-math:hover {
+    box-shadow: 0 0 0 1px rgba(0, 115, 170, 0.2);
+    background-color: rgba(0, 115, 170, 0.05);
+    border-radius: 2px;
+}
+
+/* Ensure math contexts are properly rendered when they contain multiple lines */
+mjx-mtable {
+    min-width: 100%;
+    margin: 0 !important;
+}
+
+/* Fix MathJax-specific SVG issues */
+mjx-container svg {
+    display: inline-block;
+    margin: auto;
+}
+
+/* Enhance readability when containing large matrices */
+.mjx-chtml.MJXc-display {
+    margin: 0.75em 0;
+    padding: 0.2em 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* Specific fixes for matrices */
+mjx-mrow {
+    display: block;
+}
+
+/* Fix specific display issues in WordPress admin */
+.wp-admin .algebra-tutor-math {
+    background-color: transparent; /* Remove any admin-specific background */
+}
+
+/* Ensure consistent sizing in different contexts */
+mjx-math {
+    font-size: inherit !important;
+}
+
+/* Specific fix for pmatrix and other environments */
+.mjx-mrow > .mjx-delim {
+    display: inline-flex !important;
+    vertical-align: middle !important;
+}
+
+/* Fix for brackets in matrices */
+.mjx-dtable {
+    display: inline-table !important;
+    height: auto !important;
+}
+
+/* Ensure vertical alignment is consistent */
+mjx-texatom {
+    vertical-align: baseline !important;
+}
+
+/* Fix alignment for multiple formulas in a container */
+mjx-container + mjx-container {
+    margin-top: 0.5em !important;
+    margin-bottom: 0.5em !important;
+}
+
+/* Enhance formula display in practice pages */
+.question-card .algebra-tutor-math {
+    margin: 0.25em 0;
+}
+
+/* Fix ampersand entity problems */
+.mjx-msub > .mjx-base {
+    margin-right: 0 !important;
+}
+
+.mjx-over {
+    margin-bottom: 0.15em !important;
+}

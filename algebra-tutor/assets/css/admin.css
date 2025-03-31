@@ -1,0 +1,320 @@
+/* Admin CSS for Algebra Tutor plugin */
+
+/* General admin styles */
+.algebra-tutor-admin .nav-tab-wrapper {
+    margin-bottom: 20px;
+}
+
+.algebra-tutor-admin .tab-content {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccd0d4;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+/* Headings */
+.algebra-tutor-admin h1 {
+    margin-bottom: 20px;
+    color: #23282d;
+}
+
+/* Form fields */
+.algebra-tutor-admin .form-table th {
+    width: 200px;
+    padding: 20px 10px 20px 0;
+}
+
+.algebra-tutor-admin .form-table td {
+    padding: 15px 10px;
+}
+
+.algebra-tutor-admin .description {
+    font-size: 13px;
+    font-style: italic;
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Question type selector */
+.question-type-selector {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.question-type-option {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    flex: 1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.question-type-option:hover {
+    background-color: #f8f8f8;
+    border-color: #0073aa;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.question-type-option input[type="radio"] {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.question-type-option input[type="radio"]:checked + .question-type-label {
+    color: #0073aa;
+    font-weight: bold;
+}
+
+.question-type-option input[type="radio"]:checked ~ .question-type-desc {
+    color: #333;
+}
+
+.question-type-label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    padding-right: 25px;
+}
+
+.question-type-desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Multiple choice answers */
+.multiple-answers-container {
+    margin-bottom: 15px;
+}
+
+.multiple-answer-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f9f9f9;
+    transition: all 0.2s ease;
+}
+
+.multiple-answer-row:hover {
+    background: #f0f0f0;
+    border-color: #0073aa;
+}
+
+.answer-option {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    min-width: 120px;
+    cursor: move;
+}
+
+.answer-radio-label {
+    margin-right: 5px;
+    white-space: nowrap;
+}
+
+.answer-text {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.answer-row-action {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.answer-row-action:hover {
+    background: #0073aa;
+    color: #fff;
+    border-color: #0073aa;
+}
+
+.answer-options-controls {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+/* Fill-in-the-blank answers */
+.fill-answers-container {
+    margin-bottom: 15px;
+}
+
+.blank-answer-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f9f9f9;
+}
+
+.blank-answer-row:hover {
+    background: #f0f0f0;
+    border-color: #0073aa;
+}
+
+.blank-number {
+    min-width: 100px;
+    font-weight: bold;
+    color: #0073aa;
+}
+
+.blank-answer-text {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.no-blanks-message {
+    padding: 15px;
+    background: #f8f8f8;
+    border: 1px dashed #ddd;
+    border-radius: 4px;
+    color: #666;
+}
+
+/* Difficulty selector */
+.difficulty-selector {
+    display: flex;
+    gap: 20px;
+}
+
+.difficulty-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.difficulty-level {
+    padding: 6px 15px;
+    border-radius: 15px;
+    margin-right: 8px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.difficulty-easy {
+    background-color: #e7f5e7;
+    color: #388e3c;
+}
+
+.difficulty-medium {
+    background-color: #fff8e1;
+    color: #ffa000;
+}
+
+.difficulty-hard {
+    background-color: #ffebee;
+    color: #e53935;
+}
+
+.difficulty-option input[type="radio"]:checked + .difficulty-level {
+    box-shadow: 0 0 0 2px currentColor;
+}
+
+/* Form actions */
+.form-actions {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 15px 0;
+    border-top: 1px solid #ddd;
+}
+
+.form-actions button {
+    margin-right: 10px;
+}
+
+.auto-save-status {
+    margin-right: auto;
+    color: #666;
+    font-style: italic;
+    font-size: 13px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 782px) {
+    .question-type-selector {
+        flex-direction: column;
+    }
+
+    .difficulty-selector {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .form-actions {
+        flex-wrap: wrap;
+    }
+
+    .auto-save-status {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+    }
+}
+
+/* Math formula editor styling */
+.mce-content-body .algebra-tutor-math {
+    display: inline-block;
+    padding: 2px 4px;
+    border-radius: 3px;
+    background-color: rgba(0, 115, 170, 0.05);
+    border: 1px solid rgba(0, 115, 170, 0.1);
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.mce-content-body .algebra-tutor-math:hover {
+    background-color: rgba(0, 115, 170, 0.1);
+    border-color: rgba(0, 115, 170, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mce-content-body .algebra-tutor-math::after {
+    content: "⋮";
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    font-size: 12px;
+    color: #0073aa;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.mce-content-body .algebra-tutor-math:hover::after {
+    opacity: 1;
+}
+
+.mce-content-body .math-block {
+    display: block;
+    margin: 10px 0;
+    text-align: center;
+}

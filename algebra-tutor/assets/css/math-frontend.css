@@ -1,0 +1,28 @@
+/* Math formulas styling */
+.algebra-tutor-math {
+    display: inline-block;
+    direction: ltr;
+}
+
+.algebra-tutor-math.math-block {
+    display: block;
+    text-align: center;
+    margin: 15px 0;
+}
+
+/* Basic style for questions */
+.question-text {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Style for inline math formulas */
+.algebra-tutor-math.math-inline {
+    padding: 0 3px;
+}
+
+/* Additional spacing around block formulas */
+.algebra-tutor-math.math-block {
+    padding: 10px 0;
+}

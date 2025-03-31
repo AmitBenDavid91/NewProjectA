@@ -1,0 +1,298 @@
+/**
+ * Algebra Tutor - Practice Page Styling
+ *
+ * Comprehensive styling for math practice interface
+ */
+
+/* Main container */
+#algebra-tutor-practice {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Category selector */
+.category-select {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.category-select label {
+    font-weight: 600;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.category-select select {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 280px;
+    max-width: 100%;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:hover {
+    background-color: #005f87;
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+.submit-btn:disabled {
+    background-color: #7ba7bc;
+    cursor: not-allowed;
+}
+
+/* Main finish button */
+.practice-container > .submit-btn {
+    display: block;
+    margin: 30px auto;
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #2e7d32;
+}
+
+.practice-container > .submit-btn:hover {
+    background-color: #1b5e20;
+}
+
+/* Feedback messages */
+.feedback {
+    margin-top: 15px;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 16px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.feedback.correct {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-left: 4px solid #2e7d32;
+}
+
+.feedback.incorrect {
+    background-color: #fbe9e7;
+    color: #d32f2f;
+    border-left: 4px solid #d32f2f;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Loading indicator */
+.loading-message {
+    text-align: center;
+    padding: 40px 20px;
+    font-style: italic;
+    color: #666;
+    animation: pulse 1.5s infinite;
+}
+
+.loading-message:after {
+    content: "...";
+    animation: ellipsis 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+@keyframes ellipsis {
+    0% { content: "."; }
+    33% { content: ".."; }
+    66% { content: "..."; }
+}
+
+/* No questions message */
+.no-questions {
+    text-align: center;
+    padding: 30px;
+    font-size: 18px;
+    color: #555;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    border: 1px dashed #ddd;
+}
+
+/* Math specific styling */
+.algebra-tutor-math {
+    display: inline-block;
+    direction: ltr;
+}
+
+.algebra-tutor-math.math-block {
+    display: block;
+    text-align: center;
+    margin: 15px 0;
+}
+
+/* Practice container */
+.practice-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    #algebra-tutor-practice {
+        padding: 15px;
+    }
+
+    .question-card {
+        padding: 20px;
+    }
+
+    .question-text {
+        font-size: 16px;
+    }
+
+    .category-select select {
+        width: 100%;
+    }
+
+    .answer-option label {
+        padding: 10px;
+    }
+
+    .fill-blank {
+        min-width: 100px;
+        padding: 6px 10px;
+        font-size: 15px;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+}: border-color 0.2s, box-shadow 0.2s;
+}
+
+.category-select select:focus {
+    outline: none;
+    border-color: #0073aa;
+    box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
+}
+
+/* Question cards */
+.question-card {
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.question-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.question-text {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Multiple choice options */
+.answer-options {
+    margin-top: 20px;
+}
+
+.answer-option {
+    margin-bottom: 15px;
+    transition: background-color 0.2s;
+}
+
+.answer-option label {
+    display: flex;
+    align-items: flex-start;
+    padding: 12px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #f7f7f7;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.answer-option label:hover {
+    background-color: #edf5fa;
+}
+
+.answer-option input[type="radio"] {
+    margin-right: 12px;
+    margin-top: 3px;
+}
+
+.answer-option input[type="radio"]:checked + span {
+    font-weight: 600;
+}
+
+.answer-option label:active {
+    transform: scale(0.99);
+}
+
+/* Fill-in-the-blank questions */
+.fill-question {
+    line-height: 1.8;
+}
+
+.fill-blank {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 5px;
+    min-width: 120px;
+    border: 2px solid #0073aa;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.fill-blank:focus {
+    outline: none;
+    border-color: #0073aa;
+    background-color: #f0f7fb;
+    box-shadow: 0 0 0 3px rgba(0, 115, 170, 0.2);
+}
+
+.fill-blank:disabled {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+    color: #666;
+}
+
+/* Submit button */
+.submit-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #0073aa;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition

@@ -1,0 +1,418 @@
+/**
+ * עיצוב עורך נוסחאות מתמטיות
+ *
+ * אחראי על עיצוב נוסחאות בתוך העורך, סרגל הכלים הצף לעריכת נוסחאות,
+ * מצבי תצוגה שונים, אנימציות ומעברים לחוויית משתמש משופרת.
+ *
+ * @package Algebra_Tutor
+ * @since 2.2.0
+ */
+
+/* === עיצוב נוסחאות בתוך העורך === */
+
+/* נוסחה בסיסית */
+.algebra-tutor-math {
+    display: inline-block;
+    cursor: pointer;
+    padding: 2px 4px;
+    margin: 0 2px;
+    border-radius: 3px;
+    background-color: rgba(0, 115, 170, 0.05);
+    border: 1px solid rgba(0, 115, 170, 0.1);
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.algebra-tutor-math:hover {
+    background-color: rgba(0, 115, 170, 0.1);
+    border-color: rgba(0, 115, 170, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* תצוגת עריכה */
+.algebra-tutor-math.editing {
+    background-color: rgba(0, 115, 170, 0.15);
+    border-color: rgba(0, 115, 170, 0.3);
+    box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
+    z-index: 100;
+}
+
+/* נוסחה בשורה נפרדת (block) */
+.algebra-tutor-math.math-block {
+    display: block;
+    margin: 10px 0;
+    padding: 8px;
+    text-align: center;
+}
+
+/* אינדיקציה לאפשרות עריכה */
+.algebra-tutor-math::after {
+    content: "⋮";
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    font-size: 12px;
+    color: #0073aa;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.algebra-tutor-math:hover::after {
+    opacity: 0.7;
+}
+
+.algebra-tutor-math.editing::after {
+    display: none;
+}
+
+/* === עיצוב חלון העריכה === */
+
+/* מיכל עורך נוסחאות במצב inline */
+.math-editor-container {
+    position: absolute;
+    z-index: 100000;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    min-width: 300px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* שדה עריכת נוסחאות */
+.math-editor-field {
+    width: 100%;
+    min-height: 50px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 8px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    transition: border-color 0.2s ease;
+}
+
+.math-editor-field:focus {
+    border-color: #0073aa;
+    box-shadow: 0 0 0 1px #0073aa;
+    outline: none;
+}
+
+/* תצוגה מקדימה */
+.math-preview-container {
+    background: #f7f7f7;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    min-height: 40px;
+    margin-bottom: 10px;
+    overflow-x: auto;
+}
+
+.math-preview-heading {
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    font-size: 12px;
+    color: #666;
+}
+
+.math-preview-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30px;
+    font-size: 18px;
+}
+
+/* כפתורי פעולה */
+.math-editor-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.math-editor-actions button {
+    margin-right: 5px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.math-editor-cancel {
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    color: #555;
+}
+
+.math-editor-cancel:hover {
+    background: #eee;
+}
+
+.math-editor-save {
+    background: #0073aa;
+    border: 1px solid #006799;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.math-editor-save:hover {
+    background: #006799;
+}
+
+/* === עיצוב סרגל הכלים הצף === */
+
+.math-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.math-toolbar-btn {
+    width: 36px;
+    height: 32px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.math-toolbar-btn:hover {
+    background: #f0f0f0;
+    border-color: #ccc;
+}
+
+.math-toolbar-btn.active {
+    background: #0073aa;
+    border-color: #006799;
+    color: #fff;
+}
+
+/* חלוקה לקבוצות */
+.math-toolbar-group {
+    display: flex;
+    gap: 3px;
+    padding: 0 5px;
+    border-right: 1px solid #ddd;
+}
+
+.math-toolbar-group:last-child {
+    border-right: none;
+}
+
+/* === עיצוב ספריית התבניות === */
+
+.math-templates-container {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.math-templates-nav {
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+    background: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    overflow-x: auto;
+}
+
+.math-templates-nav-btn {
+    padding: 6px 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.math-templates-nav-btn.active {
+    background: #0073aa;
+    border-color: #006799;
+    color: #fff;
+}
+
+.math-templates-content {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.math-template-item {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.math-template-item:hover {
+    border-color: #0073aa;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.math-template-preview {
+    font-size: 18px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.math-template-label {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 5px;
+    color: #555;
+}
+
+/* === אנימציות ואפקטים === */
+
+/* אנימציית הופעה */
+@keyframes math-editor-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.math-editor-container,
+.math-toolbar {
+    animation: math-editor-fade-in 0.2s ease forwards;
+}
+
+/* אפקט תצוגה מקדימה */
+.math-preview-container.updating {
+    position: relative;
+}
+
+.math-preview-container.updating::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.math-preview-container.updating::before {
+    content: "⟳";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    font-size: 24px;
+    animation: math-editor-spin 1s linear infinite;
+}
+
+@keyframes math-editor-spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* === התאמה לדארק מוד === */
+
+body.dark-mode .algebra-tutor-math {
+    background-color: rgba(114, 174, 230, 0.1);
+    border-color: rgba(114, 174, 230, 0.2);
+}
+
+body.dark-mode .algebra-tutor-math:hover {
+    background-color: rgba(114, 174, 230, 0.15);
+    border-color: rgba(114, 174, 230, 0.3);
+}
+
+body.dark-mode .algebra-tutor-math.editing {
+    background-color: rgba(114, 174, 230, 0.2);
+    border-color: rgba(114, 174, 230, 0.4);
+}
+
+body.dark-mode .algebra-tutor-math::after {
+    color: #72aee6;
+}
+
+body.dark-mode .math-editor-container {
+    background: #2c3338;
+    border-color: #1d2327;
+    color: #bbc8d4;
+}
+
+body.dark-mode .math-editor-field {
+    background: #2c3338;
+    border-color: #3c434a;
+    color: #bbc8d4;
+}
+
+body.dark-mode .math-editor-field:focus {
+    border-color: #72aee6;
+    box-shadow: 0 0 0 1px #72aee6;
+}
+
+body.dark-mode .math-preview-container {
+    background: #1d2327;
+    border-color: #3c434a;
+}
+
+body.dark-mode .math-preview-heading {
+    color: #bbc8d4;
+}
+
+body.dark-mode .math-editor-cancel {
+    background: #2c3338;
+    border-color: #3c434a;
+    color: #bbc8d4;
+}
+
+body.dark-mode .math-editor-cancel:hover {
+    background: #3c434a;
+}
+
+body.dark-mode .math-editor-save {
+    background: #2271b1;
+    border-color: #135e96;
+}
+
+body.dark-mode .math-editor-save:hover {
+    background: #135e96;
+}
+
+/* === רספונסיביות === */
+
+@media screen and (max-width: 782px) {
+    .math-editor-container {
+        width: calc(100% - 40px);
+        right: 20px;
+        left: 20px;
+    }
+
+    .math-toolbar {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+
+    .math-templates-content {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+}
